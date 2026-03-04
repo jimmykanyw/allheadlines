@@ -6,6 +6,24 @@ st.set_page_config(page_title="Grok Headlines", page_icon="📰", layout="wide")
 st.title("📰 Grok Headlines Aggregator")
 st.caption("Pure headlines only • Ready for instant copy-paste into Grok")
 
+# === ONE-CLICK COPY BLOCK FOR GROK ===
+st.divider()
+st.subheader("📋 Copy All for Grok Research")
+copy_text = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(all_headlines, 1)])
+
+st.text_area(
+    "Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok",
+    copy_text,
+    height=500
+)
+
+st.caption("Just paste the whole block into any Grok chat and say “analyze these headlines” or “research the top 10” — I’ll handle the rest.")
+
+# Refresh button
+if st.button("🔄 Refresh Headlines"):
+    st.rerun()
+    
+
 # === ADD YOUR OWN RSS FEEDS HERE (or use the defaults) ===
 feeds = [
     {"url": "https://www.businesstimes.com.sg/rss/international", "name": "Google"},
@@ -119,20 +137,3 @@ all_headlines.sort(key=lambda x: x["published"] if x["published"] else (0,0,0), 
 st.subheader(f"Latest Headlines ({len(all_headlines)})")
 for i, h in enumerate(all_headlines, 1):  #no limit
     st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
-
-# === ONE-CLICK COPY BLOCK FOR GROK ===
-st.divider()
-st.subheader("📋 Copy All for Grok Research")
-copy_text = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(all_headlines, 1)])
-
-st.text_area(
-    "Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok",
-    copy_text,
-    height=500
-)
-
-st.caption("Just paste the whole block into any Grok chat and say “analyze these headlines” or “research the top 10” — I’ll handle the rest.")
-
-# Refresh button
-if st.button("🔄 Refresh Headlines"):
-    st.rerun()
