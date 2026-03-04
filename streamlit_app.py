@@ -116,11 +116,6 @@ for feed in feeds:
 # Sort newest first (algorithmic ranking)
 all_headlines.sort(key=lambda x: x["published"] if x["published"] else (0,0,0), reverse=True)
 
-# Display clean list
-st.subheader(f"Latest Headlines ({len(all_headlines)})")
-for i, h in enumerate(all_headlines, 1):  #no limit
-    st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
-
 # === ONE-CLICK COPY BLOCK FOR GROK ===
 st.divider()
 st.subheader("📋 Copy All for Grok Research")
@@ -137,3 +132,8 @@ st.caption("Just paste the whole block into any Grok chat and say “analyze the
 # Refresh button
 if st.button("🔄 Refresh Headlines"):
     st.rerun()
+
+# Display clean list
+st.subheader(f"Latest Headlines ({len(all_headlines)})")
+for i, h in enumerate(all_headlines, 1):  #no limit
+    st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
