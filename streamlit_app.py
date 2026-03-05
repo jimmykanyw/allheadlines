@@ -3,7 +3,7 @@ import feedparser
 from datetime import datetime
 
 st.set_page_config(page_title="Grok Headlines", page_icon="📰", layout="wide")
-st.title("📰 Grok Headlines Aggregator")
+st.title("📰 Headlines Aggregator")
 st.caption("Pure headlines only • Ready for instant copy-paste into Grok")
     
 
