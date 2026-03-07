@@ -64,7 +64,7 @@ feeds_sg = [
     {"url": "http://vulcanpost.com/feed/", "name": "vulcanpost"},
 ]
 
-# ================== GROUP 2: 🌍 GLOBAL MARKETS & FINANCE ==================
+# ================== GROUP 2: 🌍 GLOBAL ==================
 feeds_global = [
     {"url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml", "name": "CNA latest"},
     {"url": "https://www.businesstimes.com.sg/rss/international", "name": "BT international"},
@@ -84,7 +84,7 @@ feeds_global = [
     {"url": "http://feeds.foxbusiness.com/foxbusiness/markets", "name": "fox business"},
 ]
 
-# ================== GROUP 3: 📈 NASDAQ CATEGORIES ==================
+# ================== GROUP 3: 📈 NYSE & NASDAQ ==================
 feeds_nasdaq = [
     {"url": "https://feeds.content.dowjones.io/public/rss/mw_topstories", "name": "MW top stories"},
     {"url": "https://feeds.content.dowjones.io/public/rss/mw_realtimeheadlines", "name": "MW headlines"},
