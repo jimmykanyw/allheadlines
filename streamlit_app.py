@@ -155,14 +155,14 @@ with tab1:
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
 with tab2:
-    st.subheader(f"🌍 Global Markets & Finance Headlines ({len(global_headlines)})")
+    st.subheader(f"🌍 Global Headlines ({len(global_headlines)})")
     copy_global = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(global_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_global, height=400, key="global_copy")
     for i, h in enumerate(global_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
 with tab3:
-    st.subheader(f"📈 NASDAQ Categories Headlines ({len(nasdaq_headlines)})")
+    st.subheader(f"📈 NYSE & NASDAQ Headlines ({len(nasdaq_headlines)})")
     copy_nasdaq = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(nasdaq_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_nasdaq, height=400, key="nasdaq_copy")
     for i, h in enumerate(nasdaq_headlines, 1):
