@@ -23,36 +23,22 @@ feeds_sg = [
     {"url": "https://www.businesstimes.com.sg/rss/asean-business", "name": "BT asean-business"},
     {"url": "http://www.businesstimes.com.sg/rss/companies-markets", "name": "BT companies-markets"},
     {"url": "http://www.privateequitywire.co.uk/rssfeeds/news/", "name": "PrivateEquityWire"},
-    {"url": "http://mustsharenews.com/feed/", "name": "mustsharenews"},
     {"url": "http://asia.nikkei.com/rss/feed/nar", "name": "Nikkeiasia"},
-    {"url": "http://sethlui.com/feed/", "name": "sethlui"},
-    {"url": "http://www.tnp.sg/rss.xml", "name": "TNP sg"},
     {"url": "https://www.99.co/singapore/insider/feed/", "name": "99.co"},
     {"url": "http://techcrunch.com/asia/feed/", "name": "techcrunch asia"},
     {"url": "http://www.technologynewschina.com/feeds/posts/default", "name": "technologynewschina"},
-    {"url": "https://confirmgood.com/feed/", "name": "confirmgood"},
     {"url": "http://dollarsandsense.sg/feed/", "name": "dollarsandsense.sg"},
     {"url": "https://www.drwealth.com/feed", "name": "drwealth"},
-    {"url": "http://eatbook.sg/feed/", "name": "eatbook.sg"},
     {"url": "http://www.theedgeproperty.com.sg/rss.xml", "name": "theedgeproperty"},
     {"url": "http://www.financeasia.com/rss.aspx", "name": "financeasia"},
-    {"url": "http://www.greatdeals.com.sg/feed/", "name": "greatdeals sg"},
-    {"url": "http://feeds.feedburner.com/hardwarezone/all", "name": "hardwarezone sg"},
-    {"url": "https://www.homeanddecor.com.sg/feed/", "name": "homeanddecor"},
-    {"url": "http://www.thehoneycombers.com/singapore/feed", "name": "thehoneycombers"},
     {"url": "http://www.investmentmoats.com/feed/", "name": "investmentmoats"},
     {"url": "http://www.mingtiandi.com/feed/", "name": "mingtiandi"},
     {"url": "http://www.moneydigest.sg/feed/", "name": "moneydigest.sg"},
     {"url": "http://blog.moneysmart.sg/feed/", "name": "moneysmart.sg"},
     {"url": "https://stackedhomes.com/blog/feed/", "name": "stackedhomes"},
     {"url": "http://ricemedia.co/feed/", "name": "ricemedia"},
-    {"url": "http://rubbisheatrubbishgrow.wordpress.com/feed/", "name": "rubbisheatrubbishgrow"},
-    {"url": "https://sethisfy.com/feed/", "name": "sethisfy"},
-    {"url": "http://shout.sg/feed/", "name": "shout.sg"},
     {"url": "https://www.singaporedivorcelawyer.com.sg/feed/", "name": "singaporedivorcelawyer"},
-    {"url": "http://feeds.feedburner.com/singaporefoodie", "name": "singaporefoodie"},
     {"url": "https://singaporelegaladvice.com/feed/", "name": "singaporelegaladvice"},
-    {"url": "http://singapore-promotions.com/feed/", "name": "singpromos"},
     {"url": "https://www.singsaver.com.sg/blog/rss.xml", "name": "singsaver"},
     {"url": "http://www.smallcapasia.com/feed/", "name": "smallcapasia"},
     {"url": "http://feeds.feedburner.com/PennOlson", "name": "techinasia"},
@@ -108,6 +94,24 @@ feeds_nasdaq = [
     #{"url": "https://www.rttnews.com/RSS/CurrencyAlerts.xml", "name": "RTT currency"},
 ]
 
+# ================== GROUP 4: 🔥 Hype ==================
+feeds_hype = [
+    {"url": "http://singapore-promotions.com/feed/", "name": "singpromos"},
+    {"url": "http://feeds.feedburner.com/singaporefoodie", "name": "singaporefoodie"},
+    {"url": "http://rubbisheatrubbishgrow.wordpress.com/feed/", "name": "rubbisheatrubbishgrow"},
+    {"url": "https://sethisfy.com/feed/", "name": "sethisfy"},
+    {"url": "http://shout.sg/feed/", "name": "shout.sg"},
+    {"url": "http://www.greatdeals.com.sg/feed/", "name": "greatdeals sg"},
+    {"url": "http://feeds.feedburner.com/hardwarezone/all", "name": "hardwarezone sg"},
+    {"url": "https://www.homeanddecor.com.sg/feed/", "name": "homeanddecor"},
+    {"url": "http://www.thehoneycombers.com/singapore/feed", "name": "thehoneycombers"},
+    {"url": "http://sethlui.com/feed/", "name": "sethlui"},
+    {"url": "http://www.tnp.sg/rss.xml", "name": "TNP sg"},
+    {"url": "http://mustsharenews.com/feed/", "name": "mustsharenews"},
+    {"url": "https://confirmgood.com/feed/", "name": "confirmgood"},
+    {"url": "http://eatbook.sg/feed/", "name": "eatbook.sg"},
+]
+
 # ================== ROBUST FETCH FUNCTION ==================
 @st.cache_data(ttl=300)  # cache for 5 minutes
 def get_headlines(feeds):
@@ -144,8 +148,12 @@ with st.status("📈 Fetching NYSE & NASDAQ feeds...", expanded=True) as status:
     nasdaq_headlines = get_headlines(feeds_nasdaq)
     status.update(label=f"✅ NASDAQ & NYSE done ({len(nasdaq_headlines)} headlines)", state="complete")
 
+with st.status("🔥 Fetching Hype feeds...", expanded=True) as status:
+    hype_headlines = get_headlines(feeds_hype)
+    status.update(label=f"✅ Hype done ({len(hype_headlines)} headlines)", state="complete")
+
 # === THREE TABS ===
-tab1, tab2, tab3 = st.tabs(["🇸🇬 Singapore & Asia", "🌍 Global", "📈 NYSE & NASDAQ"])
+tab1, tab2, tab3, tab4 = st.tabs(["🇸🇬 Singapore & Asia", "🌍 Global", "📈 NYSE & NASDAQ", "🔥 Hype"])
 
 with tab1:
     st.subheader(f"🇸🇬 Singapore & Asia Headlines ({len(sg_headlines)})")
@@ -166,6 +174,13 @@ with tab3:
     copy_nasdaq = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(nasdaq_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_nasdaq, height=400, key="nasdaq_copy")
     for i, h in enumerate(nasdaq_headlines, 1):
+        st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
+
+with tab4:
+    st.subheader(f"🔥 Hype Headlines ({len(hype_headlines)})")
+    copy_hype = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(hype_headlines, 1)])
+    st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_hype, height=400, key="hype_copy")
+    for i, h in enumerate(hype_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
 if st.button("🔄 Refresh Headlines"):
