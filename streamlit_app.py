@@ -138,11 +138,11 @@ with st.status("🇸🇬 Fetching Singapore & Asia feeds...", expanded=True) as 
 
 with st.status("🌍 Fetching Global feeds...", expanded=True) as status:
     global_headlines = get_headlines(feeds_global)
-    status.update(label=f"✅ Global Markets done ({len(global_headlines)} headlines)", state="complete")
+    status.update(label=f"✅ Global done ({len(global_headlines)} headlines)", state="complete")
 
 with st.status("📈 Fetching NYSE & NASDAQ feeds...", expanded=True) as status:
     nasdaq_headlines = get_headlines(feeds_nasdaq)
-    status.update(label=f"✅ NASDAQ done ({len(nasdaq_headlines)} headlines)", state="complete")
+    status.update(label=f"✅ NASDAQ & NYSE done ({len(nasdaq_headlines)} headlines)", state="complete")
 
 # === THREE TABS ===
 tab1, tab2, tab3 = st.tabs(["🇸🇬 Singapore & Asia", "🌍 Global", "📈 NYSE & NASDAQ"])
