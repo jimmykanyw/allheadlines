@@ -4,7 +4,7 @@ from datetime import datetime
 
 st.set_page_config(page_title="Grok Headlines", page_icon="📰", layout="wide")
 st.title("📰 Headlines Aggregator")
-st.caption("Now split into 3 clean groups • Ready for instant copy-paste into Grok")
+st.caption("Now split into 4 clean groups • Ready for instant copy-paste into Grok")
 
 # ================== GROUP 1: 🇸🇬 SINGAPORE & ASIA ==================
 feeds_sg = [
