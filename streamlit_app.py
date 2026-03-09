@@ -164,16 +164,27 @@ with st.status("🔥 Fetching Hype feeds...", expanded=True) as status:
     hype_headlines = get_headlines(feeds_hype)
     status.update(label=f"✅ Hype done ({len(hype_headlines)} headlines)", state="complete")
 
+all_headlines = sg_headlines + global_headlines + nasdaq_headlines + hype_headlines
+all_headlines.sort(key=lambda x: x["published"] if x["published"] else (0,0,0), reverse=True)
+
 # === 5 TABS WITH COPY BUTTONS UNDER EACH BOX ===
-tab1, tab2, tab3, tab4 = st.tabs(["🇸🇬 Singapore & Asia", "🌍 Global", "📈 NYSE & NASDAQ", "🔥 Hype"])
+tab0, tab1, tab2, tab3, tab4 = st.tabs(["🌐 All Headlines", "SG & Asia", "🌍 Global", "📈 NYSE & NASDAQ", "🔥 Hype"])
+
+with tab0:
+    st.subheader(f"🌐 All Headlines ({len(all_headlines)})")
+    copy_all = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(all_headlines, 1)])
+    st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_all, height=400, key="all_copy")
+    download_button(copy_all, "📋 Download All Headlines", "dl_all")
+    for i, h in enumerate(all_headlines, 1):
+        st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
+    if len(all_headlines) > 100:
+        st.caption(f"... and {len(all_headlines)-100} more (full list in the box above + download file)")
 
 with tab1:
     st.subheader(f"🇸🇬 Singapore & Asia Headlines ({len(sg_headlines)})")
     copy_sg = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(sg_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_sg, height=400, key="sg_copy")
-    
     download_button(copy_sg, "📋 Download Singapore & Asia Headlines", "dl_sg")
-    
     for i, h in enumerate(sg_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
@@ -181,7 +192,6 @@ with tab2:
     st.subheader(f"🌍 Global Headlines ({len(global_headlines)})")
     copy_global = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(global_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_global, height=400, key="global_copy")
-    
     download_button(copy_global, "📋 Download Global Headlines", "dl_global")    
     for i, h in enumerate(global_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
@@ -190,9 +200,7 @@ with tab3:
     st.subheader(f"📈 NYSE & NASDAQ Headlines ({len(nasdaq_headlines)})")
     copy_nasdaq = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(nasdaq_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_nasdaq, height=400, key="nasdaq_copy")
-    
     download_button(copy_nasdaq, "📋 Download NYSE & NASDAQ Headlines", "dl_nasdaq")
-
     for i, h in enumerate(nasdaq_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
@@ -200,9 +208,7 @@ with tab4:
     st.subheader(f"🔥 Hype Headlines ({len(hype_headlines)})")
     copy_hype = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(hype_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_hype, height=400, key="hype_copy")
-    
     download_button(copy_hype, "📋 Download Hype Headlines", "dl_hype")
-    
     for i, h in enumerate(hype_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
