@@ -18,7 +18,7 @@ def download_button(text: str, label: str, key: str):
         type="primary"   # exact red button style from your screenshot
     )
 
-# ================== GROUP 1: SG ==================
+# ================== GROUP 1: 🇸🇬 SG ==================
 feeds_sg = [
     {"url": "https://www.straitstimes.com/news/life/rss.xml", "name": "ST life"},
     {"url": "https://www.straitstimes.com/news/sport/rss.xml", "name": "ST sport"},
@@ -32,6 +32,7 @@ feeds_sg = [
     {"url": "http://www.businesstimes.com.sg/rss/wealth", "name": "BT wealth"},    
     {"url": "http://www.businesstimes.com.sg/rss/top-stories", "name": "BT Top-stories"},
     {"url": "http://www.businesstimes.com.sg/rss/companies-markets", "name": "BT companies-markets"},
+    {"url": "http://www.mingtiandi.com/feed/", "name": "mingtiandi"},
     {"url": "https://www.99.co/singapore/insider/feed/", "name": "99.co"},
     {"url": "http://www.theedgeproperty.com.sg/rss.xml", "name": "theedgeproperty"},
     {"url": "https://stackedhomes.com/blog/feed/", "name": "stackedhomes"},
@@ -51,7 +52,6 @@ feeds_global = [
     {"url": "http://techcrunch.com/asia/feed/", "name": "techcrunch asia"},
     {"url": "http://www.technologynewschina.com/feeds/posts/default", "name": "technologynewschina"},
     {"url": "http://www.financeasia.com/rss.aspx", "name": "financeasia"},
-    {"url": "http://www.mingtiandi.com/feed/", "name": "mingtiandi"},
     {"url": "http://asia.nikkei.com/rss/feed/nar", "name": "Nikkeiasia"},
     {"url": "http://feeds.feedburner.com/visualcapitalist", "name": "visualcapitalist"},
     {"url": "https://www.investing.com/rss/investing_news.rss", "name": "investing.com"},
@@ -179,8 +179,6 @@ with tab0:
     download_button(copy_all, "📋 Download All Headlines", "dl_all")
     for i, h in enumerate(all_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
-    if len(all_headlines) > 100:
-        st.caption(f"... and {len(all_headlines)-100} more (full list in the box above + download file)")
 
 with tab1:
     st.subheader(f"🇸🇬 Singapore Headlines ({len(sg_headlines)})")
