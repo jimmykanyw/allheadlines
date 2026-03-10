@@ -3,7 +3,7 @@ import feedparser
 from datetime import datetime
 import streamlit.components.v1 as components   # ← NEW for copy button
 
-st.set_page_config(page_title="Grok Headlines", page_icon="📰", layout="wide")
+st.set_page_config(page_title="Headlines", page_icon="📰", layout="wide")
 st.title("📰 Headlines Aggregator")
 st.caption("Now split into 4 clean groups • Ready for instant copy-paste into Grok")
 
