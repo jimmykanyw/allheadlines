@@ -113,7 +113,6 @@ feeds_hype = [
     {"url": "http://dollarsandsense.sg/feed/", "name": "dollarsandsense.sg"},
     {"url": "https://www.drwealth.com/feed", "name": "drwealth"},
     {"url": "http://www.investmentmoats.com/feed/", "name": "investmentmoats"},
-    {"url": "http://www.mingtiandi.com/feed/", "name": "mingtiandi"},
     {"url": "http://www.moneydigest.sg/feed/", "name": "moneydigest.sg"},
     {"url": "http://blog.moneysmart.sg/feed/", "name": "moneysmart.sg"},
     {"url": "https://www.thesmartinvestor.com.sg/feed/", "name": "thesmartinvestor sg"},
