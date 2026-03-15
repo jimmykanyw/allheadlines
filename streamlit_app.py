@@ -5,7 +5,7 @@ import streamlit.components.v1 as components   # ← NEW for copy button
 
 st.set_page_config(page_title="Headlines", page_icon="📰", layout="wide")
 st.title("📰 Headlines Aggregator")
-st.caption("Now split into 4 clean groups • Ready for instant copy-paste into Grok")
+st.caption("Now split into 4 clean groups • Ready for instant copy-paste")
 
 # ================== 100% RELIABLE (no JS, no clipboard issues) ==================
 def download_button(text: str, label: str, key: str):
@@ -92,7 +92,7 @@ feeds_nasdaq = [
     #{"url": "https://www.rttnews.com/RSS/CurrencyAlerts.xml", "name": "RTT currency"},
 ]
 
-# ================== GROUP 4: 🔥 Hype ==================
+# ================== GROUP 4: 🔥 Buzz ==================
 feeds_hype = [
     {"url": "http://www.tnp.sg/rss.xml", "name": "TNP sg"},
     {"url": "http://singapore-promotions.com/feed/", "name": "singpromos"},
@@ -161,15 +161,15 @@ with st.status("📈 Fetching NYSE / NASDAQ feeds...", expanded=True) as status:
     nasdaq_headlines = get_headlines(feeds_nasdaq)
     status.update(label=f"✅ NASDAQ & NYSE done ({len(nasdaq_headlines)} headlines)", state="complete")
 
-with st.status("🔥 Fetching Hype feeds...", expanded=True) as status:
+with st.status("🔥 Fetching Buzz feeds...", expanded=True) as status:
     hype_headlines = get_headlines(feeds_hype)
-    status.update(label=f"✅ Hype done ({len(hype_headlines)} headlines)", state="complete")
+    status.update(label=f"✅ Buzz done ({len(hype_headlines)} headlines)", state="complete")
 
 all_headlines = sg_headlines + global_headlines + nasdaq_headlines + hype_headlines
 all_headlines.sort(key=lambda x: x["published"] if x["published"] else (0,0,0), reverse=True)
 
 # === 5 TABS WITH COPY BUTTONS UNDER EACH BOX ===
-tab0, tab1, tab2, tab3, tab4 = st.tabs(["🌐 All Headlines", "SG", "🌍 Asia / Global", "📈 NYSE / NASDAQ", "🔥 Hype"])
+tab0, tab1, tab2, tab3, tab4 = st.tabs(["🌐 All Headlines", "SG", "🌍 Asia / Global", "📈 NYSE / NASDAQ", "🔥 Buzz"])
 
 with tab0:
     st.subheader(f"🌐 All Headlines ({len(all_headlines)})")
@@ -204,10 +204,10 @@ with tab3:
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
 with tab4:
-    st.subheader(f"🔥 Hype Headlines ({len(hype_headlines)})")
+    st.subheader(f"🔥 Buzz Headlines ({len(hype_headlines)})")
     copy_hype = "\n".join([f"{i}. {h['title']} ({h['source']}) — {h['link']}" for i, h in enumerate(hype_headlines, 1)])
     st.text_area("Select all (Ctrl+A) → Copy (Ctrl+C) → Paste into Grok", copy_hype, height=400, key="hype_copy")
-    download_button(copy_hype, "📋 Download Hype Headlines", "dl_hype")
+    download_button(copy_hype, "📋 Download Buzz Headlines", "dl_hype")
     for i, h in enumerate(hype_headlines, 1):
         st.markdown(f"**{i}.** [{h['title']}]({h['link']}) — *{h['source']}*")
 
