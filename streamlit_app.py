@@ -68,7 +68,7 @@ feeds_nasdaq = [
     {"url": "https://feeds.content.dowjones.io/public/rss/mw_realtimeheadlines", "name": "MW headlines"},
     {"url": "https://feeds.content.dowjones.io/public/rss/mw_bulletins", "name": "MW bulletins"},
     {"url": "https://feeds.content.dowjones.io/public/rss/mw_marketpulse", "name": "MW pulse"},
-    {"url": "https://www.investing.com/rss/investing_news.rss", "name": "investing.com    {"url": "https://www.bisnow.com/rss", "name": "bisnow.com"},
+    {"url": "https://www.investing.com/rss/investing_news.rss", "name": "investing.com"},   
     {"url": "https://www.bisnow.com/rss", "name": "bisnow.com"},
     {"url": "http://www.mining.com/feed/", "name": "mining.com"},
     {"url": "http://seekingalpha.com/listing/most-popular-articles.xml", "name": "seekingalpha"},
