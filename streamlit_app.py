@@ -9,14 +9,14 @@ st.caption("Now split into 4 clean groups • Ready for instant copy-paste into 
 
 # ================== 100% RELIABLE (no JS, no clipboard issues) ==================
 def download_button(text: str, label: str, key: str):
-    st.download_button(
-        label=label,
-        data=text,
-        file_name=f"{label.replace(' ', '_').replace('&', 'and')}.txt",
-        mime="text/plain",
-        use_container_width=True,
-        type="primary"   # exact red button style from your screenshot
-    )
+st.download_button(
+    label=label,
+    data=text,
+    file_name=f"{label.replace(' ', '_').replace('&', 'and')}.txt",
+    mime="text/plain",
+    use_container_width=True,
+    type="primary"   # exact red button style from your screenshot
+)
 
 # ================== GROUP 1: 🇸🇬 SG ==================
 feeds_sg = [
