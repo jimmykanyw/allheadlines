@@ -23,6 +23,7 @@ feeds_sg = [
     {"url": "http://www.straitstimes.com/news/opinion/rss.xml", "name": "ST Opinion"},
     {"url": "https://www.straitstimes.com/news/business/rss.xml", "name": "ST business"},
     {"url": "https://www.businesstimes.com.sg/rss/singapore", "name": "BT sg"},
+    {"url": "    https://www.businesstimes.com.sg/rss/property", "name": "BT property"},
     {"url": "https://www.businesstimes.com.sg/rss/opinion-features", "name": "BT opinion"},
     {"url": "https://www.businesstimes.com.sg/rss/startups-tech", "name": "BT startup-tech"},
     {"url": "http://www.businesstimes.com.sg/rss/wealth", "name": "BT wealth"},    
