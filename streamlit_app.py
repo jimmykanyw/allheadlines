@@ -3,20 +3,20 @@ import feedparser
 from datetime import datetime
 import streamlit.components.v1 as components   # ← NEW for copy button
 
-st.set_page_config(page_title="Headlines", page_icon="📰", layout="wide")
+st.set_page_config(page_title="Grok Headlines", page_icon="📰", layout="wide")
 st.title("📰 Headlines Aggregator")
-st.caption("Now split into 4 clean groups • Ready for instant copy-paste")
+st.caption("Now split into 4 clean groups • Ready for instant copy-paste into Grok")
 
 # ================== 100% RELIABLE (no JS, no clipboard issues) ==================
 def download_button(text: str, label: str, key: str):
-st.download_button(
-label=label,
-data=text,
-file_name=f"{label.replace(' ', '_').replace('&', 'and')}.txt",
-mime="text/plain",
-use_container_width=True,
-type="primary"   # exact red button style from your screenshot
-)
+    st.download_button(
+        label=label,
+        data=text,
+        file_name=f"{label.replace(' ', '_').replace('&', 'and')}.txt",
+        mime="text/plain",
+        use_container_width=True,
+        type="primary"   # exact red button style from your screenshot
+    )
 
 # ================== GROUP 1: 🇸🇬 SG ==================
 feeds_sg = [
